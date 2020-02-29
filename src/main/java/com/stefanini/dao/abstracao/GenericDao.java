@@ -16,6 +16,7 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 
 
 
+
 	@Inject
 	protected EntityManager entityManager;
 
