@@ -12,9 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "TB_PESSOA")
-public class Pessoa implements Serializable{
-
-	
+public class Pessoa implements Serializable {
 	/**
 	 * Serializacao da Classe
 	 */
@@ -32,7 +30,7 @@ public class Pessoa implements Serializable{
 	@NotNull
 	@Column(name = "NO_NOME")
 	private String nome;
-	
+
 	/**
 	 * Email da Pessoa
 	 */
@@ -40,11 +38,11 @@ public class Pessoa implements Serializable{
 	@Column(name = "DS_EMAIL")
 	private String email;
 	/**
-	 * Data de Nascimento 
+	 * Data de Nascimento
 	 */
 	@NotNull
 	@Column(name = "DT_NASCIMENTO")
-	private LocalDate dataNascimento; 
+	private LocalDate dataNascimento;
 	/**
 	 * Situacao da Pessoa
 	 */
@@ -52,33 +50,28 @@ public class Pessoa implements Serializable{
 	@Column(name = "ST_PESSOA")
 	private Boolean situacao;
 
-
-	@OneToMany(mappedBy= "pessoa")
+	@OneToMany(mappedBy = "pessoa")
 	private Set<Endereco> enderecos;
-	/**
-	 * Metodo construtor da classe
-	 */
+
 	public Pessoa() {
 	}
 
-
-
-
 	/**
 	 * Construtor da Classe, Obrigando receber todos os parametros
+	 * 
 	 * @param nome
 	 * @param email
 	 * @param dataNascimento
 	 * @param situacao
 	 */
-	public Pessoa(@NotNull String nome, @NotNull String email, @NotNull LocalDate dataNascimento,@NotNull Boolean situacao) {
+	public Pessoa(@NotNull String nome, @NotNull String email, @NotNull LocalDate dataNascimento,
+			@NotNull Boolean situacao) {
 		super();
 		this.nome = nome;
 		this.email = email;
 		this.dataNascimento = dataNascimento;
 		this.situacao = situacao;
 	}
-
 
 	public Set<Endereco> getEnderecos() {
 		return enderecos;
@@ -87,7 +80,6 @@ public class Pessoa implements Serializable{
 	public void setEnderecos(Set<Endereco> enderecos) {
 		this.enderecos = enderecos;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -112,8 +104,6 @@ public class Pessoa implements Serializable{
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-
-	
 
 	public String getEmail() {
 		return email;
@@ -161,13 +151,5 @@ public class Pessoa implements Serializable{
 		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", dataNascimento=" + dataNascimento
 				+ ", situacao=" + situacao + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

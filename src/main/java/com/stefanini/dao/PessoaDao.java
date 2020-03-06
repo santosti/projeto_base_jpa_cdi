@@ -4,7 +4,8 @@ import com.stefanini.dao.abstracao.GenericDao;
 import com.stefanini.model.Pessoa;
 
 /**
- * O Unico objetivo da Dao 
+ * O Unico objetivo da Dao
+ * 
  * @author joaopedromilhome
  *
  */

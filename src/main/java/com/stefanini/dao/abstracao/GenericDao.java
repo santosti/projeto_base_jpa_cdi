@@ -19,9 +19,7 @@ import com.stefanini.util.IGenericService;
  * @param <T>
  * @param <I>
  */
-public abstract class GenericDao<T, I extends Serializable> implements IGenericService<T, I>{
-
-
+public abstract class GenericDao<T, I extends Serializable> implements IGenericService<T, I> {
 
 	@Inject
 	protected EntityManager entityManager;
@@ -40,8 +38,10 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 	}
 
 	/**
-	 * @valid serve para validar a entidade antes de entrar no metodo, olhar o conceito de BEAN VALIDATION
-	 * Sempre que for executar uma DML é necessario abrir uma transacao e fecha-la, pois senão a operacao não será comitada
+	 * @valid serve para validar a entidade antes de entrar no metodo, olhar o
+	 *        conceito de BEAN VALIDATION Sempre que for executar uma DML é
+	 *        necessario abrir uma transacao e fecha-la, pois senão a operacao não
+	 *        será comitada
 	 */
 	public T salvar(@Valid T entity) {
 		EntityTransaction t = iniciarTransacao();
@@ -49,9 +49,12 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 		finalizarTransacao(t);
 		return entity;
 	}
+	
 	/**
-	 * @valid serve para validar a entidade antes de entrar no metodo, olhar o conceito de BEAN VALIDATION
-	 * Sempre que for executar uma DML é necessario abrir uma transacao e fecha-la, pois senão a operacao não será comitada
+	 * @valid serve para validar a entidade antes de entrar no metodo, olhar o
+	 *        conceito de BEAN VALIDATION Sempre que for executar uma DML é
+	 *        necessario abrir uma transacao e fecha-la, pois senão a operacao não
+	 *        será comitada
 	 */
 	public T atualizar(@Valid T entity) {
 		EntityTransaction t = iniciarTransacao();
@@ -60,9 +63,9 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 		return entity;
 	}
 
-	
 	/**
-	 * Sempre que for executar uma DML é necessario abrir uma transacao e fecha-la, pois senão a operacao não será comitada
+	 * Sempre que for executar uma DML é necessario abrir uma transacao e fecha-la,
+	 * pois senão a operacao não será comitada
 	 */
 	public void remover(I id) {
 		T entity = encontrar(id).get();
@@ -80,16 +83,17 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 		query.from(classe);
 		return Optional.of(getEntityManager().createQuery(query).getResultList());
 	}
+
 	/**
 	 * Não precisa de Transacao para efetuar DQL
 	 */
 	public Optional<T> encontrar(I id) {
 		return Optional.ofNullable(getEntityManager().find(classe, id));
 	}
-	
-	
+
 	/**
-	 * Comitar a transcao e liberar o 
+	 * Comitar a transcao e liberar o
+	 * 
 	 * @param t
 	 */
 	private void finalizarTransacao(EntityTransaction t) {
@@ -100,6 +104,7 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 
 	/**
 	 * Abrir uma transcao com o banco
+	 * 
 	 * @return
 	 */
 	private EntityTransaction iniciarTransacao() {
@@ -110,12 +115,11 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 
 	/**
 	 * Obter o EntityManager
+	 * 
 	 * @return
 	 */
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}
-	
-	
-	
+
 }

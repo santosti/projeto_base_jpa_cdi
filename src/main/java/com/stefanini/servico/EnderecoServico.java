@@ -1,27 +1,26 @@
 package com.stefanini.servico;
 
-import com.stefanini.dao.EnderecoDao;
-import com.stefanini.dao.PessoaDao;
-import com.stefanini.model.Endereco;
-import com.stefanini.model.Pessoa;
-import com.stefanini.util.IGenericService;
+import java.util.List;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+
+import com.stefanini.dao.EnderecoDao;
+import com.stefanini.model.Endereco;
+import com.stefanini.util.IGenericService;
 
 /**
  * 
  * Classe de servico, as regras de negocio devem estar nessa classe
+ * 
  * @author joaopedromilhome
  *
  */
 public class EnderecoServico implements IGenericService<Endereco, Long> {
-	
+
 	@Inject
 	private EnderecoDao dao;
-
 
 	@Override
 	public Endereco salvar(@Valid Endereco entity) {
@@ -35,7 +34,7 @@ public class EnderecoServico implements IGenericService<Endereco, Long> {
 
 	@Override
 	public void remover(Long id) {
-	dao.remover(id);
+		dao.remover(id);
 	}
 
 	@Override
@@ -47,4 +46,5 @@ public class EnderecoServico implements IGenericService<Endereco, Long> {
 	public Optional<Endereco> encontrar(Long id) {
 		return dao.encontrar(id);
 	}
+
 }
