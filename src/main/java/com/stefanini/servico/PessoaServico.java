@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 
 import com.stefanini.dao.PessoaDao;
-import com.stefanini.model.Endereco;
 import com.stefanini.model.Pessoa;
 import com.stefanini.util.IGenericService;
 

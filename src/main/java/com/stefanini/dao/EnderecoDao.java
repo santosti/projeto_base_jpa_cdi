@@ -1,7 +1,5 @@
 package com.stefanini.dao;
 
-import javax.validation.Valid;
-
 import com.stefanini.dao.abstracao.GenericDao;
 import com.stefanini.model.Endereco;
 
