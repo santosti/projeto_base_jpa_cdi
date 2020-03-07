@@ -78,7 +78,7 @@ public class App {
 		@SuppressWarnings("deprecation")
 		java.sql.Timestamp dataIncl = new java.sql.Timestamp(2019, 10, 10, 14, 15, 11, 10);
 		
-		Pessoa pessoa = new Pessoa("Simone1", "Simone1@gmail.com", LocalDate.of(1995, 8, 24), true);
+		Pessoa pessoa = new Pessoa("Simone4", "Simone4@gmail.com", LocalDate.of(1995, 8, 24), true);
 		servico.salvar(pessoa);
 
 		Endereco endereco = new Endereco(null, "Rua Verde", "Lote 42", "Cerejeiras", "São Paulo", "SP", "77774-88",pessoa);

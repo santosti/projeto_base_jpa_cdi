@@ -13,25 +13,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_PESSOA_PERFIL")
-public class PessoaPerfil implements Serializable{
+public class PessoaPerfil implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CO_SEQ_PESSOA_PERFIL")
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "CO_SEQ_PESSOA", referencedColumnName = "CO_SEQ_PESSOA", nullable = false)
 	private Pessoa pessoa;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "CO_SEQ_PERFIL", referencedColumnName = "CO_SEQ_PERFIL", nullable = false)
 	private Perfil perfil;
-	
+
 	public PessoaPerfil() {
 	}
-	
+
 	public PessoaPerfil(Pessoa pessoa, Perfil perfil) {
 		super();
 		this.pessoa = pessoa;
@@ -75,7 +75,7 @@ public class PessoaPerfil implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((perfil == null) ? 0 : perfil.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
 		return result;
@@ -90,7 +90,10 @@ public class PessoaPerfil implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaPerfil other = (PessoaPerfil) obj;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (perfil == null) {
 			if (other.perfil != null)
@@ -105,5 +108,4 @@ public class PessoaPerfil implements Serializable{
 		return true;
 	}
 
-	
 }
