@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -19,6 +21,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "TB_PESSOA")
+@NamedQueries({ @NamedQuery(name = "Pessoa.findByNome", query = "select u from Pessoa u where u.nome=:nome") })
 public class Pessoa implements Serializable {
 	/**
 	 * Serializacao da Classe

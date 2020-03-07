@@ -1,7 +1,8 @@
 package com.stefanini.teste;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
@@ -41,8 +42,8 @@ public class App {
     }
 
 	public void executar() {
-//		buscarTodos();
-//		encontrar();
+		buscarTodos();
+		encontrar();
 		salvar();
 //		remover();
 	}
@@ -52,14 +53,22 @@ public class App {
 	}
 
 	private void encontrar() {
-		Optional<Pessoa> pessoa = servico.encontrar(5L);
-		if (pessoa.isPresent()) {
-			System.out.println("Pessoa encontrada");
-			System.out.println(pessoa.get());
-		} else {
-			System.out.println("Pessoa não encontrada");
-		}
+		List<Pessoa> pessoa = new ArrayList<>();
+		pessoa = servico.getPessoaByNome("Simone1");
+		for(Pessoa p: pessoa) {
+			System.out.println(p);
+		}	
 	}
+	
+//	private void encontrar() {
+//		Optional<Pessoa> pessoa = servico.encontrar(5L);
+//		if (pessoa.isPresent()) {
+//			System.out.println("Pessoa encontrada");
+//			System.out.println(pessoa.get());
+//		} else {
+///		System.out.println("Pessoa não encontrada");
+//		}
+//	}
 
 	private void buscarTodos() {
 		servico.getList().ifPresent(i -> {
@@ -78,7 +87,7 @@ public class App {
 		@SuppressWarnings("deprecation")
 		java.sql.Timestamp dataIncl = new java.sql.Timestamp(2019, 10, 10, 14, 15, 11, 10);
 		
-		Pessoa pessoa = new Pessoa("Simone4", "Simone4@gmail.com", LocalDate.of(1995, 8, 24), true);
+		Pessoa pessoa = new Pessoa("Simone5", "Simone5@gmail.com", LocalDate.of(1995, 8, 24), true);
 		servico.salvar(pessoa);
 
 		Endereco endereco = new Endereco(null, "Rua Verde", "Lote 42", "Cerejeiras", "São Paulo", "SP", "77774-88",pessoa);
@@ -91,5 +100,6 @@ public class App {
 		servicoPesPer.salvar(pessoaPerfil);
 		
 	}
+
 	
 }

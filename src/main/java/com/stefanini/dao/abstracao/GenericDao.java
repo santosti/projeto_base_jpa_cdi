@@ -49,7 +49,7 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 		finalizarTransacao(t);
 		return entity;
 	}
-	
+
 	/**
 	 * @valid serve para validar a entidade antes de entrar no metodo, olhar o
 	 *        conceito de BEAN VALIDATION Sempre que for executar uma DML é
@@ -77,6 +77,7 @@ public abstract class GenericDao<T, I extends Serializable> implements IGenericS
 	/**
 	 * Não precisa de Transacao para efetuar DQL
 	 */
+
 	public Optional<List<T>> getList() {
 		CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<T> query = builder.createQuery(classe);

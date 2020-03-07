@@ -61,4 +61,8 @@ public class PessoaServico implements IGenericService<Pessoa, Long> {
 		return dao.encontrar(id);
 	}
 
+	public List<Pessoa> getPessoaByNome(String nome) {
+		return dao.getList(nome);
+	}
+
 }
